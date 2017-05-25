@@ -1,2 +1,3 @@
-## Statebox for the Working Mathematician
+# Blockchains for the Working Mathematician
 
+**aim**: explain ingredients of blockchains
