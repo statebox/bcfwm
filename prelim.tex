@@ -1,0 +1,89 @@
+\section{Preliminaries}
+
+We introduce some notation.
+
+\subsection{Binary Data}
+
+A bit is either zero (false) or one (true)
+
+\define{bit}{\bit}
+
+A sequence of $n$ bits of is written as
+
+\define{bits}{\bits{n}}
+
+A sequence of bits of arbitrary length is notated as
+
+\define{bitstring}{\bits{\star}}
+
+\subsection{Hash Functions}
+
+Pick some cryptographically secure hash function $H$ (e.g. \texttt{SHA256} or something better)
+
+\[
+	H : \bits{\star} \to \bits{m}
+\]
+
+% TODO pick right terminology
+Such function sometimes called \emph{one way functions} because the inverse $H^{-1}$ or pre-image function $\{x | H(x) = y \}$ cannot be efficiently computed. given just the output $y$ the only way to find a $x$ such that $H(x)=y$ is by brute force, try all possible $x$ until a match is found. (NB. This fact is exploited in Proof of Work, explained later \ref{PoW})
+
+Furthermore, flipping just a single bit of an input string $p$ to yield $p'$, $H(p)$ and $H(p')$ should give radically different addresses. The output of $H$ should be indistinguishable from  a pseudo-random function and is should be distributed evenly over \dref{addr}.
+
+\subsection{Content Addressing}
+
+We fix some size $A=160$ (for example) and define our \emph{``address space''} whose elements are all possible $A$-bit strings.
+
+\define{addr}{\bits{A}=\bits{160}}
+
+\paragraph{Idea:}
+
+We can associate a canonical address in \dref{addr} to every possible \dref{bitstring} by appying $H$ to it.
+
+The size parameter $A$ should be picked large enough so that the hash collision is far more unlikely that the earth being destroyed in the next 1000 years.
+\[
+P(p \neq q | H(p)=H(q)) \ll 1
+\]
+
+Recall that $m$ is the output size in bits of $H$. Since typically $m>A$ we just truncate the output of $H$, taking only the first $A$ bits.
+
+If $m<A$ we should pick a better hash function or make the space smaller (it is possible to use a family of hash functions to construct $H$ of arbitrary large $m$-parameter).
+
+% TODO xor-metric space
+% TODO explain verification
+
+\subsection{Proof of Work}
+\label{PoW}
+
+PoW, pioneered by Bitcoin, uses the fact the $H$ is not efficiently invertible to provide a mechanism of proof that one has done a certain amount of computational work.
+
+We introduce a parameter called \emph{difficulty} which is a number $0 < k < m$.
+
+Let $A;B$ denote concatenation of bitstrings.
+
+For a given bitstring $X$, a \emph{proof of work at difficulty $k$},
+is a bitstring (or number) $N$ called a \emph{nonce},
+such that $H(X;N)$ is a bitstring starting with $k$ \texttt{0}-bits.
+
+The reasoning is that the only way to find such $N$ is to simply try them then all until one finds that $H(X;N)$ starts with $k$ zeros.
+
+If $k=1$ there is a 50 percent chance the first bit is zero of every possible nonce.
+When $k=2$ it is is 25 percent chance the first two bits are zero, etc.
+
+% TODO comment on reuse of X and rainbow tables
+
+
+\subsection{Public-Private keys}
+
+\subsection{Hierarchical Deterministic Wallets}
+
+Aka \textbf{BIP32}, \texttt{bip32.org}
+
+\subsection{Mnemonics}
+
+Aka \textbf{BIP39} aka Brain Wallets
+
+\subsection{RLP}
+
+Runlength prefix encoding
+
+
