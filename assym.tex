@@ -1,0 +1,23 @@
+\subsection{Asymmetric Cryptography}
+% TODO comment on reuse of X and rainbow tables
+
+Cryptography is used to sign and verify transactions, but it can also be used to encrypt and decrypt information.
+Asymmetric refers to the fact the two operations use different, but related keys, called the \emph{secret} and \emph{public} keys.
+
+Two well know cryptographic systems are \emph{RSA} (Rivest-Shamir-Adleman) and \emph{ECC} (Elliptic Curve Cryptography), however, their details are irrelevant for our purpose.
+
+Let $\alpha$ be some ``actor'' in our system.
+
+We then $SK_\alpha$ for his or her or it's \emph{secret key}, which you can think of as a very large random number (actually a element of a large finite field).
+
+There is a procedure to derive from $SK_\alpha$ a corresponding \emph{public key}, $PK_\alpha$.
+
+The two keys together are called a keypair and written as $\left< SK_\alpha, PK_\alpha \right>$.
+
+We define the actor-address $\tilde{\alpha} := H(PK_\alpha)$.
+
+We can think of the system as having four operations:
+
+\begin{itemize}
+\item \texttt{encrypt}: $\star \times SK_{\alpha} $
+\end{itemize}

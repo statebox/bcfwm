@@ -1,0 +1,33 @@
+
+\subsection{Content Addressing}
+
+We fix some cryptographically secure hash function $H:X\to\bits{m}$.
+
+The we also fix some \emph{address space} by picking a ``size-parameter'' $A$ and define our the address space whose elements are all possible $A$-bit strings.
+
+\define{addr}{\bits{A}=\bits{160}}
+
+\paragraph{Idea:}
+
+To every possible \dref{bitstring} $x$ we can now associate a \emph{canonical address} $\tilde{x} \in \dref{addr}$ by applying $H$ and truncating the result it to the right size.
+
+\[
+	\tilde{x} = H(x) \restriction \dref{addr}
+\]
+
+We will often need the address of \emph{any} object $x$, not just bit strings, so we use $\tilde{x}$ as a notation $\tilde{x'}$ where $x'$ is the binary encoding of $x$.
+
+%The size parameter $A$ should be picked large enough so that a \emph{hash collision} is far more unlikely that the earth being destroyed in the next 1000 years.
+%\[
+%P(p \neq q | H(p)=H(q)) \ll 1
+%\]
+
+Recall that $m$ is the output size in bits of $H$. Since typically $m>A$ we just truncate the output of $H$, taking only the first $A$ bits.
+
+If $m<A$ we should pick a better hash function or make the space smaller (it is possible to use a family of hash functions to construct $H$ of arbitrary large $m$-parameter).
+
+In any case, when picking $A$ and $H$ should beware that the result remains collision free.
+
+% TODO xor-metric space
+% TODO explain verification
+

@@ -1,0 +1,20 @@
+\subsection{Proof of Work}
+\label{PoW}
+
+PoW, pioneered by Bitcoin, uses the fact the $H$ is not efficiently invertible to provide a mechanism of proof that one has done a certain amount of computational work.
+
+We introduce a parameter called \emph{difficulty} which is a number $0 < k < m$.
+
+Let $A;B$ denote concatenation of bitstrings.
+
+For a given bitstring $X$, a \emph{proof of work at difficulty $k$},
+is a bitstring (or number) $N$ called a \emph{nonce},
+such that $H(X;N)$ is a bitstring starting with $k$ \texttt{0}-bits.
+
+The reasoning is that the only way to find such $N$ is to simply try them then all until one finds that $H(X;N)$ starts with $k$ zeros.
+
+If $k=1$ there is a 50 percent chance the first bit is zero of every possible nonce.
+When $k=2$ it is is 25 percent chance the first two bits are zero, etc.
+
+
+

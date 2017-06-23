@@ -2,14 +2,15 @@
 
 %opening
 \title{
-{\Huge Blockchains for the Working Mathematician}\\[.5em]
-{\Large Elements of Post-Bitcoin Stateful-P2P Networks}
+  {\huge Blockchain Databases for the Working Mathematician}\\[.5em]
+  {\Large Ingredients of Stateful Decentralized Peer-to-Peer Networks}
 }
 
 \author{\texttt{wires}}
 %\thanks{ ... }
 
 \usepackage{fullpage}
+\usepackage{amssymb}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{.8em}
 
@@ -18,10 +19,56 @@
 \maketitle
 
 \begin{abstract}
-
 \end{abstract}
 
 \input{prelude.tex}
-\input{prelim.tex}
+
+\input{intro.tex}
+
+\section{Preliminaries}
+
+We introduce various concepts and notations
+
+\input{data.tex}
+\input{hash.tex}
+\input{address.tex}
+\input{assym.tex}
+\input{pow.tex}
+\input{misc.tex}
+
+\section*{references}
+
+\begin{verbatim}
+Dwork, C.; Naor, M. (1993)
+Pricing via Processing, Or, Combatting Junk Mail, Advances in Cryptology
+CRYPTO’92: Lecture Notes in Computer Science No. 740. Springer: 139–147
+http://www.wisdom.weizmann.ac.il/~naor/PAPERS/pvp.ps
+
+From: Satoshi Nakamoto <satoshi <at> vistomail.com>
+Subject: Bitcoin P2P e-cash paper
+Newsgroups: gmane.comp.encryption.general
+Date: Friday 31st October 2008 18:10:00 UTC (over 8 years ago)
+http://article.gmane.org/gmane.comp.encryption.general/12588/
+
+Nakamoto, Satoshi (2008-10-31).
+Bitcoin: A Peer-to-Peer Electronic Cash System
+https://web.archive.org/web/20100704213649/https://bitcoin.org/bitcoin.pdf
+
+Bakhtiari, S.; Safavi-Naini, R.; Pieprzyk, J.
+Cryptographic Hash Functions: A Survey.
+Technical Report 95-09, Department of Computer Science, University of Wollongong, July 1995.
+ftp://ftp.cs.uow.edu.au/pub/papers/1995/tr-95-09.ps.Z.
+
+Russell, A.
+Necessary and Sufficient Conditions for Collision-Free Hashing
+In Abstracts of Crypto 92. pp. 10-22-10-27, 1992.
+ftp://theory.lcs.mit.edu/pub/people/acr/hash.ps.
+
+Barak, B.; Arora, S.
+Computational Complexity: A Modern Approach
+Cambridge University Press
+http://theory.cs.princeton.edu/complexity/
+
+\end{verbatim}
 
 \end{document}

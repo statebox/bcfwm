@@ -1,0 +1,32 @@
+\subsection{Secure Hashing}
+
+The most basic block-chain functionally is provided by cryptographically hash functions.
+
+\paragraph{Hash Function}
+
+A \emph{hash function} $H$ is any function that can map arbitrary large bit-strings to a fixed size ($m$) bit string.
+
+\[
+	H : \bits{\star} \to \bits{m}
+\]
+
+The result of applying $H$ to some value $x$ is called the \emph{digest} or \emph{the hash value} (of $x$).
+
+\paragraph{Cryptographically Secure Hash Function}
+
+A \emph{one way function} is a functions $f$ whose inverse $f^{-1}$ or pre-image $\{x | f(x) = y \}$ cannot be \emph{efficiently computed}.
+
+The existence of one way functions is still an open problem, a proof of which would imply that $P \neq NP$.
+
+Assuming they exist and given just the output $y$, the only way to find a $x$ 
+such that $f(x)=y$ is by brute force: try all possible values of $x$ until a
+match is found. This is exploited in Proof of Work, which we talk about
+later, see \ref{PoW}.
+
+A \emph{cryptographically secure hash function} is a hash function that is also a \emph{one way function}.
+
+The output of such hash functions must be indistinguishable from a (pseudo-)random function and the domain should distribute evenly over the co-domain: flipping just a single bit of an input string $p$ to yield $p'$ should have $f(p)$ and $f(p')$ return radically different digest values.
+
+If $p \neq p'$ but $f(p) = f(p')$, we speak of a \emph{hash collision}, this is a \emph{Very Bad Thing}. A hash function is called \emph{collision free} if any efficient algorithm has negligible probability of finding such a collision.
+
+The \texttt{SHA} family of hash functions is very well know, \texttt{SHA256} is a commonly used cryptographic hash function, considered to be cryptographically secure and collision free. 
